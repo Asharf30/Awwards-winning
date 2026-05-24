@@ -1,6 +1,10 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Button from "./component/Button";
 import { TiLocationArrowOutline } from "react-icons/ti";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
@@ -11,6 +15,7 @@ const Hero = () => {
   const totalVideos = 4;
   const nextVideoRef = useRef(null);
   const miniVideoRef = useRef(null); // ✅ ref منفصل
+  const [bgIndex, setBgIndex] = useState(1);
 
   const comingVideoIndex = (currentIndex % totalVideos) + 1;
   const handleMiniVideo = () => {
@@ -25,8 +30,70 @@ const Hero = () => {
   const hendelVideoLoad = () => {
     setLodedVideos((prev) => prev + 1);
   };
+
+  useGSAP(
+    () => {
+      if (hasClicked) {
+        gsap.set("#next-video", { visibility: "visible" });
+        gsap.to("#next-video", {
+          transformOrigin: "center center",
+          scale: 1,
+          width: "100%",
+          height: "100%",
+          duration: 1,
+          ease: "power1.inOut",
+          onStart: () => nextVideoRef.current.play(),
+          onComplete: () => {
+            setBgIndex(currentIndex);
+          },
+        });
+        gsap.from("#current-video", {
+          transformOrigin: "center center",
+          scale: 0,
+          duration: 1.5,
+          ease: "power1.inOut",
+        });
+      }
+    },
+    { dependencies: [currentIndex], revertOnUpdate: true },
+  );
+
+  useEffect(() => {
+    if (lodedVideos === totalVideos - 1) {
+      setIsLoding(false);
+    }
+  });
+
+  useGSAP(() => {
+    gsap.set("#video-frame", {
+      clipPath: "polygon(14% 0%, 72% 0%, 90% 90%, 0% 100%)",
+      borderRadius: "0 0 40% 10%",
+    });
+    gsap.from("#video-frame", {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      borderRadius: "0%",
+      duration: 1.5,
+      ease: "power1.inOut",
+      scrollTrigger: {
+        trigger: "#video-frame",
+        start: "top top",
+        end: "bottom   top",
+        scrub: true,
+      },
+    });
+  });
+
   return (
     <div className="relative h-dvh overflow-x-hidden">
+      {isLoding && (
+        <div className="flex-center absolute z-50 h-dvh w-screen  overflow-hidden">
+          <div className=" three-body">
+            <div className="three-body__dot" />
+            <div className="three-body__dot" />
+            <div className="three-body__dot" />
+          </div>
+        </div>
+      )}
       <div
         id="video-frame"
         className="relative z-10
@@ -60,35 +127,35 @@ const Hero = () => {
         />
 
         <video
-          src={getVideoSrc(currentIndex)}
+          src={getVideoSrc(hasClicked ? bgIndex : currentIndex)}
           loop
           muted
           autoPlay
           onCanPlayThrough={hendelVideoLoad}
           className="left-0 absolute top-0 size-full object-cover object-center"
         />
-      </div>
-      <h1 className="special-font hero-heading  z-40 right-5 bottom-5 text-black  absolute ">
-        G<b>a</b>ming
-      </h1>
-      <div className="absolute z-40  top-0 left-0">
-        <div className="mt-24 px-5 sm:px-10">
-          <h1 className="special-font hero-heading text-blue-100">
-            redefi<b>n</b>
-            <b>e</b>
-          </h1>
-          <p className="mb-5 max-w-64 text-blue-100 font-robert-regular">
-            Enter the Metagame Layer <br /> Unleash teh play Economy
-          </p>
-          <Button
-            id="watch-trailer"
-            title="Watch Trailer"
-            leftIcon={<TiLocationArrowOutline />}
-            containerClass="!bg-yellow-300 flex-center gap-1 hover:!bg-blue-300"
-          />
+        <h1 className="special-font hero-heading  z-40 right-5 bottom-5 text-blue-75  absolute ">
+          G<b>a</b>ming
+        </h1>
+        <div className="absolute z-40  top-0 left-0 ">
+          <div className="mt-24 px-5 sm:px-10">
+            <h1 className="special-font hero-heading text-blue-100">
+              redefi<b>n</b>
+              <b>e</b>
+            </h1>
+            <p className="mb-5 max-w-64 text-blue-100 font-robert-regular">
+              Enter the Metagame Layer <br /> Unleash teh play Economy
+            </p>
+            <Button
+              id="watch-trailer"
+              title="Watch Trailer"
+              leftIcon={<TiLocationArrowOutline />}
+              containerClass="!bg-yellow-300 flex-center gap-1 hover:!bg-blue-300"
+            />
+          </div>
         </div>
       </div>
-      <h1 className="special-font hero-heading bottom-2.5 z-40 right-5  text-blue-75 absolute ">
+      <h1 className="special-font hero-heading   right-5 bottom-5 text-black absolute ">
         G<b>a</b>ming
       </h1>
     </div>

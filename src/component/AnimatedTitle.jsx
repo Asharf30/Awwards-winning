@@ -1,0 +1,49 @@
+import React from "react";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+const AnimatedTitle = ({ title, containerClass = "" }) => {
+  const containerRef = useRef(null);
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const titleAnimation = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 70%",
+          end: "center 60%",
+          toggleActions: "play none none reverse",
+        },
+      });
+      titleAnimation.to(".animated-word", {
+        opacity: 1,
+        transform: "translateZ(0) rotateY(0deg) rotateX(0deg) ",
+        ease: "power2.out",
+        stragger: 0.02,
+        
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <div ref={containerRef} className={`animated-title ${containerClass}`}>
+      {title.split("<br />").map((line, index) => (
+        <div
+          key={index}
+          className="flex-center max-w-full flex-wrap gap-2 px-10 md:gap-3"
+        >
+          {line.split(" ").map((word, i) => (
+            <span
+              key={i}
+              className="animated-word"
+              dangerouslySetInnerHTML={{ __html: word }}
+            >
+              {/* {word} */}
+            </span>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default AnimatedTitle;
