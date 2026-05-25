@@ -1,6 +1,8 @@
 import React from "react";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 const AnimatedTitle = ({ title, containerClass = "" }) => {
   const containerRef = useRef(null);
   useEffect(() => {
@@ -8,7 +10,7 @@ const AnimatedTitle = ({ title, containerClass = "" }) => {
       const titleAnimation = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 70%",
+          start: "top 75%",
           end: "center 60%",
           toggleActions: "play none none reverse",
         },
@@ -17,7 +19,7 @@ const AnimatedTitle = ({ title, containerClass = "" }) => {
         opacity: 1,
         transform: "translateZ(0) rotateY(0deg) rotateX(0deg) ",
         ease: "power2.out",
-        stragger: 0.02,
+        stagger: 0.02,
         
       });
     }, containerRef);
@@ -37,7 +39,6 @@ const AnimatedTitle = ({ title, containerClass = "" }) => {
               className="animated-word"
               dangerouslySetInnerHTML={{ __html: word }}
             >
-              {/* {word} */}
             </span>
           ))}
         </div>

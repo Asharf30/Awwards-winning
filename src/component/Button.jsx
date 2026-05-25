@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ id, title, leftIcon, containerClass }) => {
+const Button = ({ id, title, leftIcon, rightIcon, containerClass }) => {
   return (
     <div>
       <button
@@ -14,9 +14,11 @@ const Button = ({ id, title, leftIcon, containerClass }) => {
       >
         {leftIcon}
 
-        <span className="relative inline-flex overflow-hidden font-general  text-xs uppercase">
+        <span className="relative inline-flex overflow-hidden font-general text-xs uppercase">
           <div>{title}</div>
         </span>
+
+        {rightIcon}
       </button>
     </div>
   );
