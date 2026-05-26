@@ -10,11 +10,11 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
   const [isLoding, setIsLoding] = useState(true);
-  const [lodedVideos, setLodedVideos] = useState(true);
+  const [lodedVideos, setLodedVideos] = useState(0);
 
   const totalVideos = 4;
   const nextVideoRef = useRef(null);
-  const miniVideoRef = useRef(null); // ✅ ref منفصل
+  const miniVideoRef = useRef(null); 
   const [bgIndex, setBgIndex] = useState(1);
 
   const comingVideoIndex = (currentIndex % totalVideos) + 1;
@@ -62,7 +62,7 @@ const Hero = () => {
     if (lodedVideos === totalVideos - 1) {
       setIsLoding(false);
     }
-  });
+  }, [lodedVideos]);
 
   useGSAP(() => {
     gsap.set("#video-frame", {
