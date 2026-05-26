@@ -59,7 +59,9 @@ const Navbar = () => {
             <img
               src="/img/logo.png"
               alt="Logo"
-              className="w-14 -mt-2 sm:mt-0"
+              className="w-14 -mt-2 sm:mt-0 cursor-pointer transition-all duration-300 ease-in-out
+             hover:scale-110 hover:drop-shadow-[0_0_12px_#edff66]"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             />
             <Button
               title="Products"
