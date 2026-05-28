@@ -178,6 +178,19 @@ body {
     clip-path: polygon(25% 0%, 74% 0, 69% 64%, 34% 73%);
   }
 
+  .social-link {
+    color: #ffffff;
+    transition: color 0.3s ease;
+  }
+
+  .social-link:hover {
+    color: var(--social-hover, #000000);
+  }
+
+  .social-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
   .contact-clip-path-2 {
     clip-path: polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%);
   }
@@ -191,6 +204,83 @@ body {
 .indicator-line.active {
   animation: indicator-line 0.5s ease infinite;
   animation-delay: calc(var(--animation-order) * 0.1s);
+}
+
+/* ===== REALM BUTTON FX ===== */
+.realm-button {
+  position: relative;
+  color: #0b0b0b;
+  background: linear-gradient(120deg, #e9f7ff 0%, #c7f0ff 45%, #f8ffcf 100%);
+  box-shadow:
+    0 8px 30px rgba(79, 183, 221, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.65) inset,
+    0 0 0 1px rgba(79, 183, 221, 0.6);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+}
+
+.realm-button::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 180deg,
+    rgba(79, 183, 221, 0) 0deg,
+    rgba(79, 183, 221, 0.7) 90deg,
+    rgba(237, 255, 102, 0.9) 180deg,
+    rgba(79, 183, 221, 0.7) 270deg,
+    rgba(79, 183, 221, 0) 360deg
+  );
+  filter: blur(14px);
+  opacity: 0.7;
+  z-index: -1;
+  animation: realm-pulse 2.8s ease-in-out infinite;
+}
+
+.realm-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.75) 45%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.55s ease;
+  mix-blend-mode: screen;
+}
+
+.realm-button:hover {
+  transform: translateY(-2px) rotateX(6deg) rotateY(-6deg);
+  box-shadow:
+    0 16px 40px rgba(79, 183, 221, 0.5),
+    0 0 25px rgba(237, 255, 102, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.85) inset,
+    0 0 0 1px rgba(79, 183, 221, 0.8);
+  filter: saturate(1.1);
+}
+
+.realm-button:hover::after {
+  transform: translateX(120%);
+}
+
+@keyframes realm-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
 }
 
 @keyframes indicator-line {
