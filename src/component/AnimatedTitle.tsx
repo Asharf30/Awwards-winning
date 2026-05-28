@@ -7,6 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 interface AnimatedTitleProps {
   title: string;
   containerClass?: string;
+  sectionId?: string;
 }
 
 const AnimatedTitle = ({ title, containerClass = "" }: AnimatedTitleProps) => {

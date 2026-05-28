@@ -1,6 +1,6 @@
 import { TiLocationArrow } from "react-icons/ti";
 import { useState, useRef } from "react";
-import LazyVideo from "./LazyVideo";
+import LazyVideo from "./LazyVideo.tsx";
 
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");

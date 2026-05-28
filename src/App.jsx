@@ -3,9 +3,9 @@ import Hero from "./Hero";
 import Navber from "./component/Navbar";
 
 // Lazy load below-fold components for code splitting
-const About = lazy(() => import("./component/About"));
+const About = lazy(() => import("./component/About.tsx"));
 const Features = lazy(() => import("./component/Features"));
-const Story = lazy(() => import("./component/Story"));
+const Story = lazy(() => import("./component/Story.tsx"));
 const Contact = lazy(() => import("./component/Contact.tsx"));
 const Footer = lazy(() => import("./component/Footer.tsx"));
 

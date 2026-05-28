@@ -1,15 +1,14 @@
-import React from "react";
 import AnimatedTitle from "./AnimatedTitle.tsx";
 import { useRef } from "react";
 import gsap from "gsap";
-import Rounded from "./Rounded";
+import Rounded from "./Rounded.jsx";
 import Button from "./Button.tsx";
 import LazyImage from "./LazyImage.tsx";
 
 const Story = () => {
-  const frameRef = useRef(null);
+  const frameRef = useRef<HTMLDivElement>(null);
 
-  const hendelMouseLeave = () => {
+  const hendelMouseLeave = (): void => {
     const element = frameRef.current;
 
     if (element) {
@@ -21,7 +20,7 @@ const Story = () => {
       });
     }
   };
-  const hendelMouseMove = (e) => {
+  const hendelMouseMove = (e: React.MouseEvent<HTMLDivElement>): void => {
     const { clientX, clientY } = e;
     const element = frameRef.current;
 

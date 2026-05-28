@@ -1,5 +1,16 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 
+interface LazyVideoProps {
+  src: string;
+  className?: string;
+  muted?: boolean;
+  loop?: boolean;
+  autoPlay?: boolean;
+  playsInline?: boolean;
+  preload?: "none" | "metadata" | "auto";
+  onCanPlayThrough?: () => void;
+}
+
 const LazyVideo = ({
   src,
   className = "",
@@ -9,10 +20,9 @@ const LazyVideo = ({
   playsInline = true,
   preload = "none",
   onCanPlayThrough,
-  ...rest
-}) => {
-  const videoRef = useRef(null);
-  const containerRef = useRef(null);
+}: LazyVideoProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [isInView, setIsInView] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasStartedLoading, setHasStartedLoading] = useState(false);
@@ -29,7 +39,7 @@ const LazyVideo = ({
           setHasStartedLoading(true);
         }
       },
-      { rootMargin: "200px", threshold: 0.01 }
+      { rootMargin: "200px", threshold: 0.01 },
     );
 
     observer.observe(el);
@@ -54,11 +64,13 @@ const LazyVideo = ({
   }, [onCanPlayThrough]);
 
   return (
-    <div ref={containerRef} className={`relative ${className}`} style={{ overflow: "hidden" }}>
+    <div
+      ref={containerRef}
+      className={`relative ${className}`}
+      style={{ overflow: "hidden" }}
+    >
       {/* Shimmer skeleton — shown until video loads */}
-      {!isLoaded && (
-        <div className="skeleton-shimmer absolute inset-0 z-10" />
-      )}
+      {!isLoaded && <div className="skeleton-shimmer absolute inset-0 z-10" />}
 
       {/* Actual video — only set src after entering viewport */}
       {hasStartedLoading && (
@@ -72,7 +84,6 @@ const LazyVideo = ({
           onCanPlayThrough={handleCanPlayThrough}
           className={`${className} ${isLoaded ? "opacity-100" : "opacity-0"}`}
           style={{ transition: "opacity 0.5s ease" }}
-          {...rest}
         />
       )}
     </div>
