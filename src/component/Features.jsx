@@ -86,11 +86,11 @@ const BentoCard = ({ src, title, descripiton }) => {
         muted
         loop
         autoPlay
-        className="left-0 absolute top-0 size-full object-cover object-center"
+        className="absolute left-0 top-0 z-0 size-full object-cover object-center"
       />
       <div
-        className="z-10 relative flex size-full flex-col justify-between
-       p-5 text-blue-50 "
+        className="absolute inset-0 z-20 flex size-full flex-col justify-between
+       p-5 text-blue-50"
       >
         <div>
           <h1 className="bento-title special-font"> {title}</h1>
