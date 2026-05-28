@@ -57,8 +57,10 @@ const Navbar = () => {
         <nav className="flex size-full items-center justify-between p-4">
           <div className="flex items-center gap-7 ">
             <img
-              src="/img/logo.png"
+              src="/img/logo.webp"
               alt="Logo"
+              width={56}
+              height={56}
               className="w-14 -mt-2 sm:mt-0 cursor-pointer transition-all duration-300 ease-in-out
              hover:scale-110 hover:drop-shadow-[0_0_12px_#edff66]"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

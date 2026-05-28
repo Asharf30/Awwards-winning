@@ -1,10 +1,11 @@
 import React from "react";
 import Butoon from "./Button";
+import LazyImage from "./LazyImage";
 
 const ImageClipBox = ({ src, clipClass }) => {
   return (
     <div className={clipClass}>
-      <img src={src} alt="" className="w-full h-full object-cover" />
+      <LazyImage src={src} alt="" className="w-full h-full object-cover" />
     </div>
   );
 };

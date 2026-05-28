@@ -28,26 +28,31 @@
 @font-face {
   font-family: "circular-web";
   src: url("/fonts/circularweb-book.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "general";
   src: url("/fonts/general.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "robert-medium";
   src: url("/fonts/robert-medium.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "robert-regular";
   src: url("/fonts/robert-regular.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "zentry";
   src: url("/fonts/zentry-regular.woff2") format("woff2");
+  font-display: swap;
 }
 
 /* ===== GLOBAL STYLES ===== */
@@ -393,5 +398,27 @@ body {
   50% {
     transform: translateY(66%) scale(0.65);
     opacity: 0.8;
+  }
+}
+
+/* ===== SKELETON SHIMMER (Loading Placeholder) ===== */
+.skeleton-shimmer {
+  background: linear-gradient(
+    110deg,
+    rgba(30, 30, 40, 0.6) 25%,
+    rgba(60, 60, 80, 0.4) 37%,
+    rgba(30, 30, 40, 0.6) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: inherit;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }

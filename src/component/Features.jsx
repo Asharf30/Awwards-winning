@@ -1,5 +1,7 @@
 import { TiLocationArrow } from "react-icons/ti";
 import { useState, useRef } from "react";
+import LazyVideo from "./LazyVideo";
+
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
   const [glowStyle, setGlowStyle] = useState({});
@@ -79,7 +81,7 @@ export const BentoTilt = ({ children, className = "" }) => {
 const BentoCard = ({ src, title, descripiton }) => {
   return (
     <div className="size-full relative">
-      <video
+      <LazyVideo
         src={src}
         muted
         loop
@@ -179,7 +181,7 @@ const Features = () => {
           </BentoTilt>
 
           <BentoTilt className="bento-tilt_2 h-64 md:h-auto">
-            <video
+            <LazyVideo
               src="videos/feature-5.mp4"
               loop
               muted

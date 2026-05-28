@@ -4,6 +4,8 @@ import { useRef } from "react";
 import gsap from "gsap";
 import Rounded from "./Rounded";
 import Button from "./Button";
+import LazyImage from "./LazyImage";
+
 const Story = () => {
   const frameRef = useRef(null);
 
@@ -57,15 +59,18 @@ const Story = () => {
           />
           <div className="story-img-container">
             <div className="story-img-mask">
-              <div className="story-img-content">
-                <img
+              <div
+                className="story-img-content"
+                ref={frameRef}
+                onMouseLeave={hendelMouseLeave}
+                onMouseUp={hendelMouseLeave}
+                onMouseMove={hendelMouseMove}
+                onMouseEnter={hendelMouseLeave}
+              >
+                <LazyImage
                   src="/img/entrance.webp"
-                  ref={frameRef}
+                  alt="Entrance"
                   className="object-contain"
-                  onMouseLeave={hendelMouseLeave}
-                  onMouseUp={hendelMouseLeave}
-                  onMouseMove={hendelMouseMove}
-                  onMouseEnter={hendelMouseLeave}
                 />
               </div>
             </div>

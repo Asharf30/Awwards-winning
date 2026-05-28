@@ -2,6 +2,7 @@ import React from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import AnimatedTitle from "./AnimatedTitle";
+import LazyImage from "./LazyImage";
 import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -42,7 +43,7 @@ const About = () => {
       </div>
       <div className="h-dvh w-screen " id="clip">
         <div className="mask-clip-path about-image">
-          <img
+          <LazyImage
             src="img/about.webp"
             alt="Background"
             className="absolute left-0 top-0  size-full object-cover"
@@ -54,3 +55,4 @@ const About = () => {
 };
 
 export default About;
+

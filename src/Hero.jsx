@@ -110,6 +110,8 @@ const Hero = () => {
               src={getVideoSrc(comingVideoIndex)}
               muted
               loop
+              playsInline
+              preload="metadata"
               id="current-video"
               onCanPlayThrough={hendelVideoLoad}
               className="size-64 origin-center scale-150 object-cover object-center"
@@ -121,6 +123,8 @@ const Hero = () => {
           src={getVideoSrc(currentIndex)}
           muted
           loop
+          playsInline
+          preload="metadata"
           onCanPlayThrough={hendelVideoLoad}
           id="next-video"
           className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
@@ -131,6 +135,8 @@ const Hero = () => {
           loop
           muted
           autoPlay
+          playsInline
+          preload="auto"
           onCanPlayThrough={hendelVideoLoad}
           className="left-0 absolute top-0 size-full object-cover object-center"
         />
