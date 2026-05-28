@@ -1,5 +1,5 @@
 import React from "react";
-import Butoon from "./Button";
+import Button from "./Button";
 import LazyImage from "./LazyImage";
 
 const ImageClipBox = ({ src, clipClass }) => {
@@ -48,7 +48,7 @@ const Contact = () => {
             let 's b<b>u</b>ild the <br /> new era of <br /> g<b>a</b>ming
             together.
           </p>
-          <Butoon
+          <Button
             title="Contact Us"
             containerClass="mt-10  realm-button cursour-pointer"
           />

@@ -1,0 +1,9 @@
+١. الخطة: من الأسهل للأصعب
+المرحلة الأولى (لا يوجد state أو refs معقدة):
+Rounded ← Button ← Footer ← Contact
+المرحلة الثانية (فيها hooks وأحداث):
+LazyImage ← AnimatedTitle ← About ← Story
+المرحلة الثالثة (GSAP + IntersectionObserver + أحداث معقدة):
+LazyVideo ← Navbar ← Features ← Hero
+الأخيرة (entry points):
+App ← main

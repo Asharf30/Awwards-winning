@@ -1,6 +1,12 @@
 import { FaDiscord, FaTwitter, FaYoutube, FaMedium } from "react-icons/fa";
 
-const socialLinks = [
+interface SocialLink {
+  href: string;
+  icon: React.ReactNode;
+  color: string;
+}
+
+const socialLinks: SocialLink[] = [
   { href: "https://youtube.com", icon: <FaYoutube />, color: "#ff0000" },
   { href: "https://discord.com", icon: <FaDiscord />, color: "#5865f2" },
   { href: "https://medium.com", icon: <FaMedium />, color: "#12100e" },
@@ -23,7 +29,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"
-              style={{ "--social-hover": link.color }}
+              style={{ "--social-hover": link.color } as React.CSSProperties}
             >
               {link.icon}
             </a>

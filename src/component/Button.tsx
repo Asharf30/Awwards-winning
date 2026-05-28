@@ -1,6 +1,20 @@
 import React from "react";
 
-const Button = ({ id, title, leftIcon, rightIcon, containerClass }) => {
+interface ButtonProps {
+  id?: string;
+  title: string;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  containerClass?: string;
+}
+
+const Button = ({
+  id,
+  title,
+  leftIcon,
+  rightIcon,
+  containerClass,
+}: ButtonProps) => {
   return (
     <div>
       <button
