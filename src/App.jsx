@@ -1,10 +1,10 @@
 import { lazy, Suspense } from "react";
-import Hero from "./Hero";
-import Navber from "./component/Navbar";
+import Hero from "./Hero.tsx";
+import Navber from "./component/Navbar.tsx";
 
 // Lazy load below-fold components for code splitting
 const About = lazy(() => import("./component/About.tsx"));
-const Features = lazy(() => import("./component/Features"));
+const Features = lazy(() => import("./component/Features.tsx"));
 const Story = lazy(() => import("./component/Story.tsx"));
 const Contact = lazy(() => import("./component/Contact.tsx"));
 const Footer = lazy(() => import("./component/Footer.tsx"));

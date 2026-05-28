@@ -2,13 +2,18 @@ import { TiLocationArrow } from "react-icons/ti";
 import { useState, useRef } from "react";
 import LazyVideo from "./LazyVideo.tsx";
 
-export const BentoTilt = ({ children, className = "" }) => {
-  const [transformStyle, setTransformStyle] = useState("");
-  const [glowStyle, setGlowStyle] = useState({});
-  const [sheenStyle, setSheenStyle] = useState({});
-  const itemRef = useRef(null);
+interface BentoTiltProps {
+  children: React.ReactNode;
+  className?: string;
+}
 
-  const handleMouseMove = (event) => {
+export const BentoTilt = ({ children, className = "" }: BentoTiltProps) => {
+  const [transformStyle, setTransformStyle] = useState<string>("");
+  const [glowStyle, setGlowStyle] = useState<React.CSSProperties>({});
+  const [sheenStyle, setSheenStyle] = useState<React.CSSProperties>({});
+  const itemRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (!itemRef.current) return;
 
     const { left, top, width, height } =
@@ -78,7 +83,13 @@ export const BentoTilt = ({ children, className = "" }) => {
   );
 };
 
-const BentoCard = ({ src, title, descripiton }) => {
+interface BentoCardProps {
+  src: string;
+  title: React.ReactNode;
+  descripiton?: string;
+}
+
+const BentoCard = ({ src, title, descripiton }: BentoCardProps) => {
   return (
     <div className="size-full relative">
       <LazyVideo
@@ -141,7 +152,6 @@ const Features = () => {
                 </>
               }
               descripiton="An anime and gaming-inspired NFT collection - the IP primed for expansion."
-              isComingSoon
             />
           </BentoTilt>
 
@@ -154,7 +164,6 @@ const Features = () => {
                 </>
               }
               descripiton="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
-              isComingSoon
             />
           </BentoTilt>
 
@@ -167,7 +176,6 @@ const Features = () => {
                 </>
               }
               descripiton="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
-              isComingSoon
             />
           </BentoTilt>
 

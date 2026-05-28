@@ -4,11 +4,11 @@ import { TiLocationArrowOutline } from "react-icons/ti";
 import { useWindowScroll } from "react-use";
 import gsap from "gsap";
 
-const NAVITEMS = ["Prologue", "Vault", "Nexus", "About", "Contact"];
+const NAVITEMS: string[] = ["Prologue", "Vault", "Nexus", "About", "Contact"];
 
 const Navbar = () => {
-  const ContainerRefNav = useRef(null);
-  const lastScrollYRef = useRef(0);
+  const ContainerRefNav = useRef<HTMLDivElement>(null);
+  const lastScrollYRef = useRef<number>(0);
   const { y: currentScrollY } = useWindowScroll();
   const [isnavVisible, setIsnavVisible] = useState(true);
 

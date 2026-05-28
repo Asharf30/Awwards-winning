@@ -7,31 +7,31 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState<number>(1);
   const [hasClicked, setHasClicked] = useState(false);
   const [isLoding, setIsLoding] = useState(true);
-  const [lodedVideos, setLodedVideos] = useState(0);
+  const [lodedVideos, setLodedVideos] = useState<number>(0);
 
   const totalVideos = 4;
-  const nextVideoRef = useRef(null);
-  const miniVideoRef = useRef(null);
-  const [bgIndex, setBgIndex] = useState(1);
+  const nextVideoRef = useRef<HTMLVideoElement>(null);
+  const miniVideoRef = useRef<HTMLVideoElement>(null);
+  const [bgIndex, setBgIndex] = useState<number>(1);
 
-  const comingVideoIndex = (currentIndex % totalVideos) + 1;
-  const handleMiniVideo = () => {
+  const comingVideoIndex: number = (currentIndex % totalVideos) + 1;
+  const handleMiniVideo = (): void => {
     setHasClicked(true);
 
     setCurrentIndex(comingVideoIndex);
   };
-  const getVideoSrc = (index) => {
+  const getVideoSrc = (index: number): string => {
     return `/videos/hero-${index}.mp4`;
   };
 
-  const hendelVideoLoad = () => {
+  const hendelVideoLoad = (): void => {
     setLodedVideos((prev) => prev + 1);
   };
 
-  const safePlay = (videoEl) => {
+  const safePlay = (videoEl: HTMLVideoElement | null) => {
     if (!videoEl) return;
     const playPromise = videoEl.play();
     if (playPromise?.catch) {
