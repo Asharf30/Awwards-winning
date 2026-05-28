@@ -14,7 +14,7 @@ const Hero = () => {
 
   const totalVideos = 4;
   const nextVideoRef = useRef(null);
-  const miniVideoRef = useRef(null); 
+  const miniVideoRef = useRef(null);
   const [bgIndex, setBgIndex] = useState(1);
 
   const comingVideoIndex = (currentIndex % totalVideos) + 1;
@@ -31,6 +31,14 @@ const Hero = () => {
     setLodedVideos((prev) => prev + 1);
   };
 
+  const safePlay = (videoEl) => {
+    if (!videoEl) return;
+    const playPromise = videoEl.play();
+    if (playPromise?.catch) {
+      playPromise.catch(() => {});
+    }
+  };
+
   useGSAP(
     () => {
       if (hasClicked) {
@@ -42,7 +50,7 @@ const Hero = () => {
           height: "100%",
           duration: 1,
           ease: "power1.inOut",
-          onStart: () => nextVideoRef.current.play(),
+          onStart: () => safePlay(nextVideoRef.current),
           onComplete: () => {
             setBgIndex(currentIndex);
           },
