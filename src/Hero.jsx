@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import Button from "./component/Button";
+import Button from "./component/Button.tsx";
 import { TiLocationArrowOutline } from "react-icons/ti";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";

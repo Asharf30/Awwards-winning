@@ -1,8 +1,12 @@
-import React from "react";
-import Button from "./Button";
-import LazyImage from "./LazyImage";
+import Button from "./Button.tsx";
+import LazyImage from "./LazyImage.tsx";
 
-const ImageClipBox = ({ src, clipClass }) => {
+interface ImageClipBoxProps {
+  src: string;
+  clipClass: string;
+}
+
+const ImageClipBox = ({ src, clipClass }: ImageClipBoxProps) => {
   return (
     <div className={clipClass}>
       <LazyImage src={src} alt="" className="w-full h-full object-cover" />
@@ -10,7 +14,7 @@ const ImageClipBox = ({ src, clipClass }) => {
   );
 };
 
-const Contact = () => {
+const Contact: React.FC = () => {
   return (
     <div id="contact" className="my-20 min-h-96 w-screen px-10">
       <div className="rounded-lg relative bg-black py-24 text-blue-50 sm:overflow-hidden">

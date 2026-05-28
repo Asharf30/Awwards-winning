@@ -1,10 +1,10 @@
 import React from "react";
-import AnimatedTitle from "./AnimatedTitle";
+import AnimatedTitle from "./AnimatedTitle.tsx";
 import { useRef } from "react";
 import gsap from "gsap";
 import Rounded from "./Rounded";
-import Button from "./Button";
-import LazyImage from "./LazyImage";
+import Button from "./Button.tsx";
+import LazyImage from "./LazyImage.tsx";
 
 const Story = () => {
   const frameRef = useRef(null);

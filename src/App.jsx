@@ -6,8 +6,8 @@ import Navber from "./component/Navbar";
 const About = lazy(() => import("./component/About"));
 const Features = lazy(() => import("./component/Features"));
 const Story = lazy(() => import("./component/Story"));
-const Contact = lazy(() => import("./component/Contact"));
-const Footer = lazy(() => import("./component/Footer"));
+const Contact = lazy(() => import("./component/Contact.tsx"));
+const Footer = lazy(() => import("./component/Footer.tsx"));
 
 // Minimal loading fallback
 const SectionFallback = () => (

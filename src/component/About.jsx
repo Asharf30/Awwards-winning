@@ -1,8 +1,8 @@
 import React from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import AnimatedTitle from "./AnimatedTitle";
-import LazyImage from "./LazyImage";
+import AnimatedTitle from "./AnimatedTitle.tsx";
+import LazyImage from "./LazyImage.tsx";
 import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,4 +55,3 @@ const About = () => {
 };
 
 export default About;
-
