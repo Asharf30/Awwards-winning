@@ -14,7 +14,7 @@ const Hero = () => {
 
   const totalVideos = 4;
   const nextVideoRef = useRef(null);
-  const miniVideoRef = useRef(null); 
+  const miniVideoRef = useRef(null);
   const [bgIndex, setBgIndex] = useState(1);
 
   const comingVideoIndex = (currentIndex % totalVideos) + 1;
@@ -96,27 +96,25 @@ const Hero = () => {
       )}
       <div
         id="video-frame"
-        className="relative z-10
-          h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
+        className="group relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
       >
         <div
-          className="mask-clip-path scale-50 opacity-0 transition-all 
-          absolute-center z-50  duration-500 ease-in hover:scale-100 hover:opacity-100
-         absolute size-64 cursor-pointer overflow-hidden rounded-lg"
+          onClick={handleMiniVideo}
+          className="mask-clip-path absolute-center z-50 size-64 cursor-pointer
+          overflow-hidden rounded-lg scale-50 opacity-0 transition-all duration-500 ease-in
+          group-hover:scale-100 group-hover:opacity-100"
         >
-          <div onClick={handleMiniVideo} className="origin-center">
-            <video
-              ref={miniVideoRef}
-              src={getVideoSrc(comingVideoIndex)}
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              id="current-video"
-              onCanPlayThrough={hendelVideoLoad}
-              className="size-64 origin-center scale-150 object-cover object-center"
-            />
-          </div>
+          <video
+            ref={miniVideoRef}
+            src={getVideoSrc(comingVideoIndex)}
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            id="current-video"
+            onCanPlayThrough={hendelVideoLoad}
+            className="size-64 origin-center scale-150 object-cover object-center"
+          />
         </div>
         <video
           ref={nextVideoRef}
