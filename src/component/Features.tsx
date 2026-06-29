@@ -145,7 +145,7 @@ const Features = () => {
         <div className="grid h-auto md:h-[135vh] w-full grid-cols-1 md:grid-cols-2 md:grid-rows-3 gap-7">
           <BentoTilt className="bento-tilt_1 h-72 md:h-auto md:row-span-2">
             <BentoCard
-              src="videos/feature-2.mp4"
+              src="/videos/feature-2.mp4"
               title={
                 <>
                   zig<b>m</b>a
@@ -157,7 +157,7 @@ const Features = () => {
 
           <BentoTilt className="bento-tilt_1 h-72 md:h-auto">
             <BentoCard
-              src="videos/feature-3.mp4"
+              src="/videos/feature-3.mp4"
               title={
                 <>
                   n<b>e</b>xus
@@ -169,7 +169,7 @@ const Features = () => {
 
           <BentoTilt className="bento-tilt_1 h-72 md:h-auto">
             <BentoCard
-              src="videos/feature-4.mp4"
+              src="/videos/feature-4.mp4"
               title={
                 <>
                   az<b>u</b>l
@@ -190,7 +190,7 @@ const Features = () => {
 
           <BentoTilt className="bento-tilt_2 h-64 md:h-auto">
             <LazyVideo
-              src="videos/feature-5.mp4"
+              src="/videos/feature-5.mp4"
               loop
               muted
               autoPlay

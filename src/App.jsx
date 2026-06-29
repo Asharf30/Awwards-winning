@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import Hero from "./Hero.tsx";
-import Navber from "./component/Navbar.tsx";
+import Navbar from "./component/Navbar.tsx";
 
 // Lazy load below-fold components for code splitting
 const About = lazy(() => import("./component/About.tsx"));
@@ -23,7 +23,7 @@ const SectionFallback = () => (
 const App = () => {
   return (
     <main className=" relative min-h-screen w-screen  overflow-x-hidden">
-      <Navber />
+      <Navbar />
       <Hero />
       <Suspense fallback={<SectionFallback />}>
         <About />

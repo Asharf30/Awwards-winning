@@ -68,6 +68,7 @@ const Hero = () => {
 
   useEffect(() => {
     if (lodedVideos === totalVideos - 1) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsLoding(false);
     }
   }, [lodedVideos]);
