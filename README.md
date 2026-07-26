@@ -40,7 +40,7 @@ Icons	react-icons
 Utilities	react-use
 
 📁 Project Structure
-
+```
 src/
 ├── component/
 │   ├── Navbar.tsx
@@ -60,4 +60,4 @@ src/
 ├── index.css
 └── main.jsx
 
-
+```
