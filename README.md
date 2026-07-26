@@ -2,9 +2,8 @@
 
 An interactive, animation-rich landing page for Zentry, a cross-platform gaming metaverse. Built with React, TypeScript, and Tailwind CSS v4, and brought to life with GSAP scroll-triggered animations, a tilt-responsive bento grid, and fully lazy-loaded media for smooth performance.
 
-🔗 Live Demo
+🔗 Live Demo :https://awwards-winning-ashraf.vercel.app/
 
-View on Awwwards ↗
 
 ✨ Features
 🎬 Cinematic Hero Section — interactive video switcher with smooth clip-path transitions
@@ -42,21 +41,4 @@ src/
 ├── App.css
 ├── index.css
 └── main.jsx
-🚀 Getting Started
-bash
-# Clone the repository
-git clone https://github.com/your-username/your-repo-name.git
 
-# Navigate into the project
-cd your-repo-name
-
-# Install dependencies
-npm install
-
-# Run the development server
-npm run dev
-📄 License
-
-This project is open source and available for personal or educational use.
-
-Made with ❤️ by Ashraf
