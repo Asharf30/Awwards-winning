@@ -3,7 +3,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import Rounded from "./Rounded.jsx";
 import Button from "./Button.tsx";
-import LazyImage from "./LazyImage.tsx";
 
 const Story = () => {
   const frameRef = useRef<HTMLDivElement>(null);
@@ -66,10 +65,11 @@ const Story = () => {
                 onMouseMove={hendelMouseMove}
                 onMouseEnter={hendelMouseLeave}
               >
-                <LazyImage
+                <img
                   src="/img/entrance.webp"
                   alt="Entrance"
                   className="object-contain"
+                  loading="lazy"
                 />
               </div>
             </div>

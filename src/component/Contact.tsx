@@ -1,5 +1,4 @@
 import Button from "./Button.tsx";
-import LazyImage from "./LazyImage.tsx";
 
 interface ImageClipBoxProps {
   src: string;
@@ -9,7 +8,12 @@ interface ImageClipBoxProps {
 const ImageClipBox = ({ src, clipClass }: ImageClipBoxProps) => {
   return (
     <div className={clipClass}>
-      <LazyImage src={src} alt="" className="w-full h-full object-cover" />
+      <img
+        src={src}
+        alt=""
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
     </div>
   );
 };

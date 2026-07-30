@@ -1,6 +1,5 @@
 import { TiLocationArrow } from "react-icons/ti";
 import { useState, useRef } from "react";
-import LazyVideo from "./LazyVideo.tsx";
 
 interface BentoTiltProps {
   children: React.ReactNode;
@@ -92,11 +91,13 @@ interface BentoCardProps {
 const BentoCard = ({ src, title, descripiton }: BentoCardProps) => {
   return (
     <div className="size-full relative">
-      <LazyVideo
+      <video
         src={src}
         muted
         loop
         autoPlay
+        playsInline
+        preload="metadata"
         className="absolute left-0 top-0 z-0 size-full object-cover object-center"
       />
       <div
@@ -189,11 +190,13 @@ const Features = () => {
           </BentoTilt>
 
           <BentoTilt className="bento-tilt_2 h-64 md:h-auto">
-            <LazyVideo
+            <video
               src="/videos/feature-5.mp4"
               loop
               muted
               autoPlay
+              playsInline
+              preload="metadata"
               className="size-full object-cover object-center"
             />
           </BentoTilt>
