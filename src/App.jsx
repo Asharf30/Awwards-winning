@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import Hero from "./Hero.tsx";
 import Navbar from "./component/Navbar.tsx";
 
@@ -20,6 +20,27 @@ const SectionFallback = () => (
   </div>
 );
 
+const DeferredSection = ({ children }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return <div ref={ref}>{isVisible ? children : <div className="h-[50vh] w-screen" />}</div>;
+};
+
 const App = () => {
   return (
     <main className=" relative min-h-screen w-screen  overflow-x-hidden">
@@ -28,9 +49,11 @@ const App = () => {
       <Suspense fallback={<SectionFallback />}>
         <About />
       </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <Features />
-      </Suspense>
+      <DeferredSection>
+        <Suspense fallback={<SectionFallback />}>
+          <Features />
+        </Suspense>
+      </DeferredSection>
       <Suspense fallback={<SectionFallback />}>
         <Story />
       </Suspense>

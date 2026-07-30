@@ -11,6 +11,7 @@ const Hero = () => {
   const [hasClicked, setHasClicked] = useState(false);
   const [isLoding, setIsLoding] = useState(true);
   const [lodedVideos, setLodedVideos] = useState<number>(0);
+  const [canPreloadNext, setCanPreloadNext] = useState(false);
 
   const totalVideos = 4;
   const nextVideoRef = useRef<HTMLVideoElement>(null);
@@ -67,9 +68,12 @@ const Hero = () => {
   );
 
   useEffect(() => {
-    if (lodedVideos === totalVideos - 1) {
+    if (lodedVideos >= 1) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsLoding(false);
+      setTimeout(() => {
+        setCanPreloadNext(true);
+      }, 500);
     }
   }, [lodedVideos]);
 
@@ -116,25 +120,23 @@ const Hero = () => {
           <div onClick={handleMiniVideo} className="origin-center">
             <video
               ref={miniVideoRef}
-              src={getVideoSrc(comingVideoIndex)}
+              src={canPreloadNext ? getVideoSrc(comingVideoIndex) : ""}
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="auto"
               id="current-video"
-              onCanPlayThrough={hendelVideoLoad}
               className="size-64 origin-center scale-150 object-cover object-center"
             />
           </div>
         </div>
         <video
           ref={nextVideoRef}
-          src={getVideoSrc(currentIndex)}
+          src={canPreloadNext ? getVideoSrc(currentIndex) : ""}
           muted
           loop
           playsInline
-          preload="metadata"
-          onCanPlayThrough={hendelVideoLoad}
+          preload="auto"
           id="next-video"
           className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
         />
